@@ -1,0 +1,44 @@
+[alias]
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	cp = cherry-pick
+	st = status -s
+	cl = clone
+	ci = commit
+	co = checkout
+	br = branch
+  up = !git fetch origin && git rebase -i origin/master
+  go = !git rebase --continue
+  abort = !git rebase --abort
+  cleanup = !git remote prune origin && git gc
+  changelog = !git commit -am 'Update changelog'
+
+[user]
+	name = Tanel Suurhans
+	email = tanel@suurhans.com
+
+[github]
+	user = tanelsuurhans
+
+[core]
+	autocrlf = input
+
+[push]
+	default = matching
+
+[branch]
+	autosetuprebase = always
+
+[color]
+	ui = true
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
